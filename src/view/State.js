@@ -22,7 +22,7 @@ function App() {
   // Menggunakan hook useState untuk mendefinisikan state getLink dan fungsi setLink untuk mengubah nilai state tersebut
   const [getLink, setLink] = useState("");
 
-  // function ChangeLink untuk mengubah nilai state getLink menjadi "Link diubah"
+  // function ChangeLink untuk mengubah nilaii state getLink menjadi "Link diubah"
   function ChangeLink() {
     setLink("Link diubah");
   }
