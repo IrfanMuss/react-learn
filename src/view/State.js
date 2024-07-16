@@ -1,14 +1,34 @@
 import { useState } from "react";
-import State from "../components/State";
+// komponen State sebagai function yang menerima prop gantiLink
+function State({ gantiLink }) {
+  return (
+    <div>
+      <ul>
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">
+            {/* Jika gantiLink kosong, tampilkan "Contact", jika tidak, tampilkan nilai gantiLink */}
+            {!gantiLink ? "Contact" : gantiLink}
+          </a>
+        </li>
+      </ul>
+    </div>
+  );
+}
 
 function App() {
   // Menggunakan hook useState untuk mendefinisikan state getLink dan fungsi setLink untuk mengubah nilai state tersebut
   const [getLink, setLink] = useState("");
 
   // function ChangeLink untuk mengubah nilai state getLink menjadi "Link diubah"
-  function ChangeLink(){
+  function ChangeLink() {
     setLink("Link diubah");
-  };
+  }
 
   return (
     <div>
