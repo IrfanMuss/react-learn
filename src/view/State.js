@@ -1,9 +1,9 @@
 import { useState } from "react";
-// komponen State sebagai function yang menerima prop gantiLink
+
 function State({ gantiLink }) {
   return (
-    <div>
-      <ul>
+    <div className="p-4">
+      <ul >
         <li>
           <a href="#">Home</a>
         </li>
@@ -11,10 +11,7 @@ function State({ gantiLink }) {
           <a href="#">About</a>
         </li>
         <li>
-          <a href="#">
-            {/* Jika gantiLink kosong, tampilkan "Contact", jika tidak, tampilkan nilai gantiLink */}
-            {!gantiLink ? "Contact" : gantiLink}
-          </a>
+          <a href="#">{!gantiLink ? "Contact" : gantiLink}</a>
         </li>
       </ul>
     </div>
@@ -31,12 +28,12 @@ function App() {
   }
 
   return (
-    <div>
-      <h2>Ini State</h2>
+    <div style={{ border: "2px solid black", padding: "1rem" }}>
+      <h3>Ini State</h3>
       {/* Menggunakan komponen State dan mengirimkan state getLink sebagai prop gantiLink */}
       <State gantiLink={getLink} />
       {/* Button yang memanggil fungsi ChangeLink ketika diklik */}
-      <button onClick={() => ChangeLink()}>Click Me😜</button>
+      <button onClick={() => ChangeLink()}>Change Link</button>
     </div>
   );
 }
