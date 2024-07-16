@@ -1,4 +1,4 @@
-// Komponen Marqu menerima props dan menampilkan teks yang diberikan dalam tag <marquee>
+// Komponen Marquu menerima props dan menampilkan teks yang diberikan dalam tag <marquee>
 const Marqu = (props) => {
   return (
     <div>
