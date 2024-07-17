@@ -1,38 +1,36 @@
-// Komponen Marquu menerima props dan menampilkan teks yang diberikan dalam tag <marquee>
-const Marqu = (props) => {
-  return (
-    <div>
-      <marquee>{props.text}</marquee>
-    </div>
-  );
+import './style.css'
+import gambar from "../react.png";
+
+// Membuat objek data yang menyimpan props title, imgUrl, dan imgSize
+const data = {
+  title: "Belajar Props",
+  imgUrl: gambar,
+  imgSize: 120,
 };
 
-// Komponen Button menerima props dan membuat tombol yang memanggil fungsi ketika diklik
+// Membuat komponen Button yang menerima props
 const Button = (props) => {
   return (
-    <div>
-      <button onClick={() => props.klik()}>Button Props</button> {/* Tombol yang memanggil props.klik saat diklik */}
-    </div>
+    // Button yang ketika diklik akan memanggil fungsi klik dari props
+    <button onClick={() => props.klik()}>Props</button>
   );
 };
 
-// Komponen utama App
-function App() {
-  // membuat variable text berisi Teks yang akan ditampilkan dalam komponen Marqu
-  const text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
-
-  // function clicked yang akan dipanggil saat tombol diklik
-  function clicked() {
-    return alert("ini Button Props"); // Menampilkan alert ketika tombol diklik
-  }
+export default function App() {
+  // Fungsi yang akan dijalankan ketika button diklik
+  const clicked = () => {
+    return alert("Button Props"); // Menampilkan alert dengan pesan "ini Button Props"
+  };
 
   return (
-    <div style={{ border: "2px solid black", padding: "1rem" }}>
-      <h3>Ini Props</h3>
-      <Marqu text={text}></Marqu> {/* Menggunakan komponen Marqu dan mengirimkan text sebagai prop */}
-      <Button klik={clicked}></Button> {/* Menggunakan komponen Button dan mengirimkan fungsi clicked sebagai prop */}
+    <div className="box">
+      <h3>Props</h3>
+      <h4>{data.title}</h4> {/* Menampilkan props title dari objek data */}
+      {/* Menampilkan gambar dari props imgUrl dan ukuran sesuai props imgSize dari objek data */}
+      <img src={data.imgUrl} alt="react" style={{ width: data.imgSize }}></img>
+      <br></br>
+      {/* Menampilkan komponen Button dan mengirimkan fungsi clicked sebagai props */}
+      <Button klik={clicked}></Button>
     </div>
   );
 }
-
-export default App;
