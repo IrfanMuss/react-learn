@@ -9,11 +9,9 @@ function State({ gantiLink }) {
     <div className="p-4">
       <ul>
         <li>
-          {/* Link untuk Home */}
           <a href="#">Home</a>
         </li>
         <li>
-          {/* Link untuk About */}
           <a href="#">About</a>
         </li>
         <li>
