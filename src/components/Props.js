@@ -1,5 +1,4 @@
-import './style.css'
-import gambar from "../react.png";
+import gambar from "../assets/image/react.png";
 
 // Membuat objek data yang menyimpan props title, imgUrl, dan imgSize
 const data = {

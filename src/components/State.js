@@ -1,7 +1,6 @@
 // Import useState dari React untuk menggunakan state hooks
 import { useState } from "react";
 import React from 'react';
-import './style.css'
 
 // Komponen State
 function State({ gantiLink }) {

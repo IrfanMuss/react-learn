@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import State from './view/State';
-import Props from './view/Props';
+import App from './pages/App'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <State />
-    <Props />
+    <h1 style={{ textAlign : 'center' }}>React-Learn</h1>
+    <App></App>
   </React.StrictMode>
 );
 
