@@ -4,7 +4,11 @@ import Button from "../../Atoms/Button/Button";
 const FormLogin = () => {
   return (
     <>
-      <Form name="email" type="email" placeholder="Masukkan email atau username">
+      <Form
+        name="email"
+        type="email"
+        placeholder="Masukkan email atau username"
+      >
         Email atau Username
       </Form>
       <Form name="password" type="password" placeholder="*****">

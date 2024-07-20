@@ -21,7 +21,7 @@ const FormRegister = () => {
         Confirm Password
       </Form>
       <Button type="submit" classname="bg-blue-700 w-full">
-        Login
+        Sign Up
       </Button>
     </>
   );
