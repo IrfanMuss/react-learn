@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const AuthTemplate = (props) => {
   const { children, title } = props;
   return (
@@ -8,6 +10,24 @@ const AuthTemplate = (props) => {
           Welcome, please enter your credentials
         </p>
         <form action="">{children}</form>
+        {/* Conditional Rendering */}
+        <p className="text-sm text-center mt-3">
+          {title === "Login" ? (
+            <>
+              Don't have an account?{" "}
+              <Link to="/register" className="font-bold text-blue-600">
+                Sign Up
+              </Link>
+            </>
+          ) : (
+            <>
+              Already have an account?{" "}
+              <Link to="/login" className="font-bold text-blue-600">
+                Login
+              </Link>
+            </>
+          )}
+        </p>
       </div>
     </div>
   );
