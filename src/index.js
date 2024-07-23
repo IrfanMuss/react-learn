@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./Pages/Auth/Login";
 import RegisterPage from "./Pages/Auth/Regiter";
+import ProductsPage from "./Pages/Products";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/products",
+    element: <ProductsPage />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
