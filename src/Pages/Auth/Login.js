@@ -1,13 +1,11 @@
 import AuthTemplate from "../../components/Templates/Auth/AuthTemplate";
-import FormLogin from "../../components/Organism/Auth/FormLogin";
+import LoginForm from "../../components/Organism/Auth/LoginForm";
 
 const LoginPage = () => {
   return (
-    <form action="">
       <AuthTemplate title="Login">
-        <FormLogin />
+        <LoginForm />
       </AuthTemplate>
-    </form>
   );
 };
 

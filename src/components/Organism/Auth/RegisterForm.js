@@ -1,25 +1,25 @@
-import Form from "../../Molecules/Form/Form";
+import InputForm from "../../Molecules/Form/InputForm";
 import Button from "../../Atoms/Button/Button";
 
 const FormRegister = () => {
   return (
     <>
-      <Form name="username" type="text" placeholder="insert your username">
+      <InputForm name="username" type="text" placeholder="insert your username">
         Username
-      </Form>
-      <Form name="email" type="email" placeholder="Example@email.com">
+      </InputForm>
+      <InputForm name="email" type="email" placeholder="Example@email.com">
         Email
-      </Form>
-      <Form name="password" type="password" placeholder="*****">
+      </InputForm>
+      <InputForm name="password" type="password" placeholder="*****">
         Password
-      </Form>
-      <Form
+      </InputForm>
+      <InputForm
         name="confirm_password"
         type="password"
         placeholder="confirm your password"
       >
         Confirm Password
-      </Form>
+      </InputForm>
       <Button type="submit" classname="bg-blue-700 w-full">
         Sign Up
       </Button>

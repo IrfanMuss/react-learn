@@ -9,7 +9,7 @@ const AuthTemplate = (props) => {
         <p className="font-medium text-slate-500 mb-8">
           Welcome, please enter your credentials
         </p>
-        <form action="">{children}</form>
+        {children}
         {/* Conditional Rendering */}
         <p className="text-sm text-center mt-3">
           {title === "Login" ? (

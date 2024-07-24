@@ -1,7 +1,7 @@
 import Label from "../../Atoms/Label/Label";
 import Input from "../../Atoms/Input/Input";
 
-const Form = (props) => {
+const InputForm = (props) => {
   const { name, children, placeholder, type } = props;
   return (
     <div className="mb-6">
@@ -11,4 +11,4 @@ const Form = (props) => {
   );
 };
 
-export default Form;
+export default InputForm;

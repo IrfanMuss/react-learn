@@ -1,23 +1,29 @@
-import Form from "../../Molecules/Form/Form";
+import InputForm from "../../Molecules/Form/InputForm";
 import Button from "../../Atoms/Button/Button";
 
 const FormLogin = () => {
+  const handleLogin = (event) => {
+    event.preventDefault()
+    localStorage.setItem('email', event.target.email.value)
+    localStorage.setItem('password', event.target.password.value)
+    window.location.href ="/products"
+  };
   return (
-    <>
-      <Form
+    <form onSubmit={handleLogin}>
+      <InputForm
         name="email"
         type="email"
         placeholder="Masukkan email atau username"
       >
         Email atau Username
-      </Form>
-      <Form name="password" type="password" placeholder="*****">
+      </InputForm>
+      <InputForm name="password" type="password" placeholder="*****">
         Password
-      </Form>
+      </InputForm>
       <Button type="submit" classname="bg-blue-700 w-full">
         Login
       </Button>
-    </>
+    </form>
   );
 };
 
