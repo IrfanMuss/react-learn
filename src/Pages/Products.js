@@ -1,6 +1,6 @@
 import ProductCard from "../components/Organism/Card/ProductCard";
 import Button from "../components/Atoms/Button/Button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Counter from "../components/Organism/Counter";
 
 const products = [
@@ -39,25 +39,23 @@ const ProductsPage = () => {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-// setCart dari localStorage jika ada, jika tidak maka menjadi array kosong
-useEffect(() => {
-  setCart(JSON.parse(localStorage.getItem("cart")) || []);
-}, []);
+  // setCart dari localStorage jika ada, jika tidak maka menjadi array kosong
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem("cart")) || []);
+  }, []);
 
-// menghitung total harga dan menyimpan data keranjang ke localStorage setiap kali 'cart' berubah
-useEffect(() => {
-  if (cart.length > 0) {
-    // Hitung total harga dengan menjumlahkan harga produk dikali kuantitas
-    const sum = cart.reduce((acc, item) => {
-      const product = products.find((product) => product.id === item.id);
-      return acc + product.price * item.qty;
-    }, 0);
-    setTotalPrice(sum); // Set total harga
-    localStorage.setItem("cart", JSON.stringify(cart)); // Simpan cart ke localStorage
-  }
-}, [cart]); // Bergantung pada perubahan 'cart'
-
-
+  // menghitung total harga dan menyimpan data keranjang ke localStorage setiap kali 'cart' berubah
+  useEffect(() => {
+    if (cart.length > 0) {
+      // Hitung total harga dengan menjumlahkan harga produk dikali kuantitas
+      const sum = cart.reduce((acc, item) => {
+        const product = products.find((product) => product.id === item.id);
+        return acc + product.price * item.qty;
+      }, 0);
+      setTotalPrice(sum); // Set total harga
+      localStorage.setItem("cart", JSON.stringify(cart)); // Simpan cart ke localStorage
+    }
+  }, [cart]); // Bergantung pada perubahan 'cart'
 
   // function untuk menangani penambahan item ke keranjang berdasarkan ID item.
   const handleAddToCart = (id) => {
@@ -80,6 +78,25 @@ useEffect(() => {
     localStorage.removeItem("password");
     window.location.href = "/login";
   };
+
+  // const cartRef = useRef(JSON.parse(localStorage.getItem("cart")) || []);
+
+  // const handleCartRef = (id) => {
+  //   cartRef.current = [ ...cartRef.current, { id, qty: 1 }];
+  //   localStorage.setItem("cart", JSON.stringify(cartRef.current));
+  // };
+
+  const totalPriceRef = useRef(null);
+
+ useEffect(() => {
+    if (cart.length > 0) {
+      totalPriceRef.current.style.display = "table-row";
+    }
+    else {
+      totalPriceRef.current.style.display = "none";
+    }
+  }, [cart]);
+
   return (
     <>
       <div className="flex justify-end h-20 bg-blue-700 text-white items-center px-10">
@@ -142,7 +159,7 @@ useEffect(() => {
                   </tr>
                 );
               })}
-              <tr>
+              <tr ref={totalPriceRef}>
                 <td colSpan={3}>
                   <b>Total Price</b>
                 </td>
