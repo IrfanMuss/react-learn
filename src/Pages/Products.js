@@ -2,9 +2,8 @@ import ProductCard from "../components/Organism/Card/ProductCard";
 import Button from "../components/Atoms/Button/Button";
 import { useState, useEffect, useRef } from "react";
 import Counter from "../components/Organism/Counter";
-import { getProducts } from "../services/dsa/Products.sevice";
-
-const email = localStorage.getItem("email");
+import { getProducts } from "../service/Products.service";
+import { getUsername } from "../service/Auth.service";
 
 // Use State
 const ProductsPage = () => {
@@ -12,11 +11,26 @@ const ProductsPage = () => {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [products, setProducts] = useState([]);
+  const [username, setUsername] = useState("");
 
   // setCart dari localStorage jika ada, jika tidak maka menjadi array kosong
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart")) || []);
   }, []);
+
+useEffect(() => {
+  // Mengambil token dari localStorage
+  const token = localStorage.getItem("token");
+
+  // Jika token ada, ambil nama pengguna dan set ke state 'username'
+  if (token) {
+    setUsername(getUsername(token));
+  } else {
+    // Jika token tidak ada, alihkan pengguna ke halaman login
+    window.location.href = "/login";
+  }
+}, []);
+
 
   useEffect(() => {
     getProducts((data) => {
@@ -54,8 +68,7 @@ const ProductsPage = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("email");
-    localStorage.removeItem("password");
+    localStorage.removeItem("token");
     window.location.href = "/login";
   };
 
@@ -79,7 +92,7 @@ const ProductsPage = () => {
   return (
     <>
       <div className="flex justify-end h-20 bg-blue-700 text-white items-center px-10">
-        {email}
+        {username}
         <Button classname="bg-red-500 ml-5" onClick={handleLogout}>
           Logout
         </Button>
