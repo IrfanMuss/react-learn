@@ -4,18 +4,21 @@ import { forwardRef, useRef, useEffect } from "react";
 
 const FormLogin = forwardRef(() => {
   const handleLogin = (event) => {
-    event.preventDefault()
-    localStorage.setItem('email', event.target.email.value)
-    localStorage.setItem('password', event.target.password.value)
-    window.location.href ="/products"
+    event.preventDefault();
+    localStorage.setItem("email", event.target.email.value);
+    localStorage.setItem("password", event.target.password.value);
+    window.location.href = "/products";
   };
 
+  // referensi untuk elemen input email
   const emailRef = useRef(null);
 
-  useEffect (() => {
-    console.log(emailRef)
-    emailRef.current.focus();
-  }, []);
+  // Fokus otomatis pada input email setelah komponen dirender
+  useEffect(() => {
+    if (emailRef.current) {
+      emailRef.current.focus(); // Set fokus pada input email
+    }
+  }, []); // Hanya dijalankan saat komponen pertama kali dirender
 
   return (
     <form onSubmit={handleLogin}>
@@ -23,7 +26,7 @@ const FormLogin = forwardRef(() => {
         name="email"
         type="email"
         placeholder="Masukkan email atau username"
-        ref={emailRef}
+        ref={emailRef} // Menghubungkan ref dengan elemen input
       >
         Email atau Username
       </InputForm>
