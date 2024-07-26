@@ -11,20 +11,20 @@ const ProductCard = ({ children }) => {
 const Header = ({ image }) => {
   return (
     <a href="#">
-      <img src={image} alt="product" className="p-8 rounded-t-lg"></img>
+      <img src={image} alt="product" className="p-8 rounded-t-lg w-full h-60 object-cover"></img>
     </a>
   );
 };
 
-const Body = ({ children, name }) => {
+const Body = ({ children, title }) => {
   return (
     <div className="px-5 pb-5 h-full">
       <a href="#">
         <h5 className="text-xl text-white tracking-tight font-semibold">
-          {name}
+          {title.substring(0, 20)} ...
         </h5>
       </a>
-      <p className="text-white text-m">{children}</p>
+      <p className="text-white text-m">{children.substring(0, 100)} ...</p>
     </div>
   );
 };
@@ -33,7 +33,7 @@ const Footer = ({ price, handleAddToCart, id }) => {
   return (
     <div className="flex items-center justify-between px-5 pb-5 mx-2">
       <span className="text-xl text-white font-bold">
-        Rp {price.toLocaleString("id-ID", { syle: "curency", curency: "IDR" })}
+        $ {price.toLocaleString("id-ID", { syle: "curency", curency: "USD" })}
       </span>
       <Button classname="bg-blue-600" onClick={() => handleAddToCart(id)}>
         <svg
