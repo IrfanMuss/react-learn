@@ -1,9 +1,8 @@
 import ProductCard from "../components/Organism/Card/ProductCard";
 import Button from "../components/Atoms/Button/Button";
 import { useState, useEffect, useRef } from "react";
-import Counter from "../components/Organism/Counter";
 import { getProducts } from "../service/Products.service";
-import { getUsername } from "../service/Auth.service";
+import { useLogin } from "../hooks/Auth/useLogin";
 
 // Use State
 const ProductsPage = () => {
@@ -11,26 +10,12 @@ const ProductsPage = () => {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [products, setProducts] = useState([]);
-  const [username, setUsername] = useState("");
+  const username = useLogin();
 
   // setCart dari localStorage jika ada, jika tidak maka menjadi array kosong
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart")) || []);
   }, []);
-
-useEffect(() => {
-  // Mengambil token dari localStorage
-  const token = localStorage.getItem("token");
-
-  // Jika token ada, ambil nama pengguna dan set ke state 'username'
-  if (token) {
-    setUsername(getUsername(token));
-  } else {
-    // Jika token tidak ada, alihkan pengguna ke halaman login
-    window.location.href = "/login";
-  }
-}, []);
-
 
   useEffect(() => {
     getProducts((data) => {
